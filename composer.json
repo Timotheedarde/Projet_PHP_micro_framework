@@ -1,0 +1,28 @@
+{
+    "name": "davaxi/digital_campus",
+    "description": "Digital campus RPG code",
+    "type": "project",
+    "license": "ICS",
+    "authors": [
+        {
+            "name": "David Patiashvili",
+            "email": "david.patiashvili@uneformation.fr"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^7.3",
+        "ext-pdo": "^7.3",
+        "slim/slim": "4.*",
+        "slim/psr7": "^1.2",
+        "slim/twig-view": "^3.1"
+    },
+    "require-dev": {
+        "ext-json": "^1.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "RPG\\": "src/"
+        }
+    }
+}

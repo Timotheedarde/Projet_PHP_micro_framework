@@ -1,0 +1,45 @@
+{% extends '/ui/layout.twig' %}
+
+{% block content %}
+    <h3 class="mt-3">Ajouter une tuile de carte</h3>
+
+    <form method="post" action="{{ url|e('html_attr') }}" class="my-3 border p-4">
+        {% if errors|length > 0 %}
+            <div class="alert alert-danger p-4">
+                <ul class="m-0">
+                    {% for error in errors %}<li>{{ error }}</li>{% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        <div class="form-group">
+            <label for="form_type">Type de tuile</label>
+            <select name="type" class="form-control" id="form_type">
+                {% for typeId, typeLabel in types %}
+                    <option {% if typeId == data.type %}selected="selected"{% endif%} value="{{ typeId|e('html_attr') }}">{{ typeLabel }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="form_position_x">Position X</label>
+            <input value="{{ data.position_x|default(0)|e('html_attr') }}" name="position_x" type="number" step="1" min="0" class="form-control" id="form_position_x">
+        </div>
+        <div class="form-group">
+            <label for="form_position_y">Position Y</label>
+            <input value="{{ data.position_y|default(0)|e('html_attr') }}" name="position_y" type="number" step="1" min="0" class="form-control" id="form_position_y">
+        </div>
+        <div class="form-group">
+            <label for="form_type">Magasin</label>
+            <select name="store_id" class="form-control" id="form_store_id">
+                <option value="0">Aucun</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="form_enemy_id">Ennemie</label>
+            <select name="enemy_id" class="form-control" id="form_enemy_id">
+                <option value="0">Aucun</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">{% if data.id %}Mettre à jour{%  else %}Ajouter{% endif %}</button>
+        <a class="btn btn-secondary" href="/map">Annuler</a>
+    </form>
+{% endblock %}

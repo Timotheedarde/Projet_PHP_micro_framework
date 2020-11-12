@@ -1,0 +1,23 @@
+{% set items = {
+    '/': 'Home',
+    '/map': 'La carte',
+    '/store': 'Les boutiques',
+    '/object': 'Les items',
+    '/personage': 'Les personnages',
+    '/vehicule': 'Les véhicules',
+    '/account': 'Les comptes',
+} %}
+
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+    <div class="sidebar-sticky pt-3">
+        <ul class="nav flex-column">
+            {% for itemPath, itemLabel in items %}
+                <li class="nav-item">
+                    <a class="nav-link active" href="{{ itemPath|e('html_attr') }}">
+                        {{ itemLabel }} <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</nav>
